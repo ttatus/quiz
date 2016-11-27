@@ -18,6 +18,8 @@ import java.io.Serializable;
 @ManagedBean
 @SessionScoped
 public class UserHomeBean implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @EJB
     private UserDAO userDAO;
     User user;
