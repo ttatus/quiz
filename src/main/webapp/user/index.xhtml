@@ -10,7 +10,11 @@
     <title>User home page</title>
 </h:head>
 <h:body>
-    <h3>Hi, user.</h3>
-    <h:link outcome="/index" value="Back to Homepage" />
+    <h3>Hi, #{userHomeBean.user.fullName}.</h3>
+    <h:link outcome="/index" value="Back to Homepage" /><br/>
+    <h:form>
+        <h:commandButton action="profile" value="View Profile"/>
+    </h:form>
+
 </h:body>
 </html>

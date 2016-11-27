@@ -86,6 +86,10 @@ public class User implements Serializable {
         this.roles = roles;
     }
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     @Override
     public String toString() {
         return "User{" +
