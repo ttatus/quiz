@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:outputLabel value="You can change user`s status or delete him."/><br/>
+    <h:dataTable value="#{usersListBean.users}" var="user">
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{user.fullName}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Email</f:facet>
+            #{user.email}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Status</f:facet>
+            #{user.roleName}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <h:form>
+                <h:commandButton value="Delete" action="#{usersListBean.delete(user.id)}"/>
+            </h:form>
+        </h:column>
+    </h:dataTable>
+</f:view>
+</html>

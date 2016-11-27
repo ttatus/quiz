@@ -10,7 +10,11 @@
     <title>Admin home page</title>
 </h:head>
 <h:body>
-    <h3>Hi, admin.</h3>
+    <h3>Hi, admin. You can do everything you want here!</h3>
+    <h:form>
+        <h:commandButton value="View users" action="users"/>
+    </h:form>
+
     <h:link outcome="/index" value="Back to Homepage" />
 </h:body>
 </html>

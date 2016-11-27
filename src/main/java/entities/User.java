@@ -90,6 +90,10 @@ public class User implements Serializable {
         return firstName + " " + lastName;
     }
 
+    public String getRoleName() {
+        return getRoles().get(0).getRoleName();
+    }
+
     @Override
     public String toString() {
         return "User{" +
