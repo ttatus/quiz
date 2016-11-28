@@ -16,14 +16,9 @@ import java.util.List;
  * Created by tanya on 2016-11-27.
  */
 @Stateless
-public class UserDAO {
-    @PersistenceContext(unitName = "quiz")
-    protected EntityManager em;
-
-    public UserDAO() {}
-
-    public User find(int id) {
-        return em.find(User.class, id);
+public class UserDAO extends BaseDAO<User> {
+    public UserDAO() {
+        super.setEntityClass(User.class);
     }
 
     public List<User> findAll() {
@@ -40,16 +35,6 @@ public class UserDAO {
         em.persist(user);
         em.flush();
         return user;
-    }
-
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void update(User u) {
-        em.merge(u);
-    }
-
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void delete(User user) {
-        em.remove(em.merge(user));
     }
 
     public User findUserByEmail(String email) {
