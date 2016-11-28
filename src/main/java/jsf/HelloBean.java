@@ -9,5 +9,4 @@ import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 public class HelloBean {
-
 }

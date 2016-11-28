@@ -6,8 +6,6 @@ import entities.User;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +26,7 @@ public class UserDAO extends BaseDAO<User> {
 
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public User create(String firstName, String lastName, String email, String password) {
-        User user = new User(firstName, lastName, email, password);
+        User user = new User( firstName, lastName, email, password);
         List<Role> roles = new ArrayList<Role>();
         roles.add(getRole("user"));
         user.setRoles(roles);

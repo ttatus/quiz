@@ -1,4 +1,4 @@
-package jsf;
+package jsf.user;
 
 import dao.UserDAO;
 import entities.User;

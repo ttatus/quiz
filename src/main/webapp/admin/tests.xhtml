@@ -2,19 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
-
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <title>User home page</title>
+    <title>Tests</title>
 </h:head>
 <h:body>
-    <h3>Hi, user (username).</h3>
-    <h:link outcome="/index" value="Back to Homepage" /><br/>
-    <h:form>
-        <h:commandButton action="profile" value="View Profile"/>
-    </h:form>
+    <h3>The list of all tests</h3>
+    <h:link outcome="index" value="Back to Homepage" /><br/>
     <h:form>
         <h:selectOneMenu value="#{testsListBean.selectedCategory}">
             <f:selectItems value="#{testsListBean.categories}"/>
@@ -29,6 +25,12 @@
         <h:column>
             <f:facet name="header">Category</f:facet>/
             #{test.category}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <h:form>
+                <h:commandButton value="Delete" action="#{testsListBean.delete(test.id)}"/>
+            </h:form>
         </h:column>
     </h:dataTable>
 </h:body>
