@@ -1,6 +1,7 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by tanya on 2016-11-28.
@@ -15,6 +16,9 @@ public class Test {
     private String testName;
     @Column(name = "category", nullable = false)
     private String category;
+    @OneToMany(mappedBy = "test")
+    private List<Question> questions;
+
 
     public Test() {
     }
@@ -46,6 +50,14 @@ public class Test {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     @Override
