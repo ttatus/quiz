@@ -6,7 +6,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-<f:view>
+<h:head>
+    <link href="resources/css/bootstrap.css" rel="stylesheet"/>
+    <title>Sign-Up Page</title>
+</h:head>
+<h:body>
     <h:outputLabel value="Fill all fields to register in my system."/>
     <h:form>
         <h:outputLabel value="First name:"/>
@@ -24,5 +28,5 @@
         <h:commandButton action="#{registrationBean.createUser}" value="Submit"/><br/>
     </h:form>
     #{registrationBean.message}
-</f:view>
+</h:body>
 </html>

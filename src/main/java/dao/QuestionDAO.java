@@ -18,8 +18,8 @@ public class QuestionDAO extends BaseDAO<Question> {
     QuestionDAO() { super.setEntityClass(Question.class);}
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public Question create(String question, String answer, int points, Test test) {
-        return em.merge(new Question(question, answer, points, test));
+    public Question create(Question question) {
+        return em.merge(question);
     }
 
     public List<Question> findAll() {

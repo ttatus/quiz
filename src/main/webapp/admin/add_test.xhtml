@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>New test</title>
+    <link href="resources/css/bootstrap.css" rel="stylesheet"/>
+</h:head>
+<h:body>
+    <h4>Add a new test</h4>
+
+    <h:form>
+        <h:outputLabel value="Question:"/>
+        <h:inputText value="#{addTestBean.question}" required="true"/><br/>
+
+        <h:outputLabel value="Answer:"/>
+        <h:inputText value="#{addTestBean.answer}" required="true"/><br/>
+
+        <h:inputText a:type="number" value="#{addTestBean.points}" required="true">
+            <f:convertNumber/>
+        </h:inputText><br/>
+        <h:commandButton action="#{addTestBean.addQuestion}" value="Add question"/><br/>
+    </h:form>
+
+    <h:outputLabel>Questions in your test:</h:outputLabel><br/>
+    <ui:repeat value="#{addTestBean.questions}" var="q">
+        <h:outputLabel value="#{q.question}"/><br/>
+    </ui:repeat>
+
+    <h:form>
+        <h:outputLabel value="Name:"/>
+        <h:inputText value="#{addTestBean.testName}" required="true"/><br/>
+
+        <h:outputLabel value="Category:"/>
+        <h:inputText value="#{addTestBean.testCategory}" required="true"/><br/>
+        <h:commandButton action="#{addTestBean.createTest}" value="Create test"/><br/>
+    </h:form>
+</h:body>
+</html>

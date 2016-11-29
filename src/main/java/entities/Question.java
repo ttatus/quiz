@@ -18,15 +18,11 @@ public class Question {
     private String answer;
     @Column(name = "points", nullable = false)
     private int points;
-    @ManyToOne
-    @JoinColumn(name = "test_id")
-    private Test test;
 
-    public Question(String question, String answer, int points, Test test) {
+    public Question(String question, String answer, int points) {
         this.question = question;
         this.answer = answer;
         this.points = points;
-        this.test = test;
     }
 
     public Question() {
@@ -64,14 +60,6 @@ public class Question {
         this.points = points;
     }
 
-    public Test getTest() {
-        return test;
-    }
-
-    public void setTest(Test test) {
-        this.test = test;
-    }
-
     @Override
     public String toString() {
         return "Question{" +
@@ -79,7 +67,6 @@ public class Question {
                 ", question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
                 ", points=" + points +
-                ", test=" + test +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import entities.Question;
 import entities.Test;
 
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,9 +21,13 @@ public class TestDAO extends BaseDAO<Test> {
         super.setEntityClass(Test.class);
     }
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public Test create(String name, String category) {
-        return em.merge(new Test(name, category));
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public Test create(String name, String category, List<Question> q) {
+        Test test = new Test(name, category);
+        test.setQuestions(q);
+        em.persist(test);
+        em.flush();
+        return test;
     }
 
     public List<Test> findAll() {

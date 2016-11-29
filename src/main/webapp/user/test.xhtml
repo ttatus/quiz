@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Test - #{passTestBean.test.testName}</title>
+    <link href="resources/css/bootstrap.css" rel="stylesheet"/>
+</h:head>
+<h:body>
+    <h3>#{passTestBean.test.testName}</h3>
+    <p>Enter your answers into fields and then click "Check me!"</p>
+    <h:form>
+        <ui:repeat value="#{passTestBean.test.questions}" var="q" varStatus="loop">
+            <h:outputLabel value="#{q.question}"/><br/>
+            <h:inputText value="#{passTestBean.answers[loop.index]}" /><br/>
+        </ui:repeat>
+        <h:commandButton value="Check me!" action="#{passTestBean.check}"/>
+    </h:form>
+    <h:outputLabel value="Your result: #{passTestBean.result}"/>
+</h:body>
+</html>

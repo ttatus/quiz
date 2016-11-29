@@ -8,9 +8,10 @@
 
 <h:head>
     <title>User home page</title>
+    <link href="resources/css/bootstrap.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h3>Hi, user (username).</h3>
+    <h3>Hi, user! You can pass tests here or view your profile.</h3>
     <h:link outcome="/index" value="Back to Homepage" /><br/>
     <h:form>
         <h:commandButton action="profile" value="View Profile"/>
@@ -24,10 +25,12 @@
     <h:dataTable value="#{testsListBean.tests}" var="test">
         <h:column>
             <f:facet name="header">Name</f:facet>
-            #{test.testName}
+            <h:link value="#{test.testName}" outcome="test">
+                <f:param name="test_id" value="#{test.id}"/>
+            </h:link>
         </h:column>
         <h:column>
-            <f:facet name="header">Category</f:facet>/
+            <f:facet name="header">Category</f:facet>
             #{test.category}
         </h:column>
     </h:dataTable>

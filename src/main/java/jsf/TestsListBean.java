@@ -19,7 +19,7 @@ import java.util.List;
  * Created by tanya on 2016-11-28.
  */
 @ManagedBean
-@TransactionScoped
+@RequestScoped
 public class TestsListBean implements Serializable {
     @EJB
     private TestDAO testDAO;
@@ -34,7 +34,7 @@ public class TestsListBean implements Serializable {
         categories.add("All");
     }
 
-    private String selectedCategory;
+    private String selectedCategory = "All";
 
     public void filter() {
         if (selectedCategory.equals("All")) {
@@ -65,4 +65,9 @@ public class TestsListBean implements Serializable {
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
     }
+
+//    public void goToTest(int test_id) throws IOException {
+//        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+//        ec.redirect();
+//    }
 }

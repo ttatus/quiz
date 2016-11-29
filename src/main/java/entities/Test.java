@@ -16,9 +16,9 @@ public class Test {
     private String testName;
     @Column(name = "category", nullable = false)
     private String category;
-    @OneToMany(mappedBy = "test")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "test_id", nullable = false)
     private List<Question> questions;
-
 
     public Test() {
     }
