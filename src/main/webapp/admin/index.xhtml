@@ -11,12 +11,12 @@
     <link href="../resources/css/bootstrap.css" rel="stylesheet"/>
 </h:head>
 <h:body>
+    <h:link outcome="/index" value="Back to Homepage" />
+
     <h3>Hi, admin. You can do everything you want here!</h3>
     <h:form>
-        <h:commandButton value="View users" action="users"/><br/>
-        <h:commandButton value="View tests" action="tests"/>
+        <h:commandButton class="btn btn-default" value="View users" action="users"/><br/>
+        <h:commandButton class="btn btn-default" value="View tests" action="tests"/>
     </h:form>
-
-    <h:link outcome="/index" value="Back to Homepage" />
 </h:body>
 </html>

@@ -10,30 +10,32 @@
     <link href="../resources/css/bootstrap.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h3>The list of all tests</h3>
     <h:link outcome="index" value="Back to Homepage" /><br/>
-    <h:form>
+
+    <h3>The list of all tests</h3>
+
+    <h:form class="form-horizontal">
         <h:selectOneMenu value="#{testsListBean.selectedCategory}">
             <f:selectItems value="#{testsListBean.categories}"/>
         </h:selectOneMenu>
-        <h:commandButton action="#{testsListBean.filter}" value="Filter"/>
+        <h:commandButton class="btn btn-default" action="#{testsListBean.filter}" value="  Filter"/>
     </h:form>
-    <h:dataTable value="#{testsListBean.tests}" var="test">
+    <h:dataTable class="table table-hover" value="#{testsListBean.tests}" var="test">
         <h:column>
             <f:facet name="header">Name</f:facet>
             #{test.testName}
         </h:column>
         <h:column>
-            <f:facet name="header">Category</f:facet>/
+            <f:facet name="header">Category</f:facet>
             #{test.category}
         </h:column>
         <h:column>
             <f:facet name="header">Delete</f:facet>
             <h:form>
-                <h:commandButton value="Delete" action="#{testsListBean.delete(test.id)}"/>
+                <h:commandButton class="btn btn-default" value="Delete" action="#{testsListBean.delete(test.id)}"/>
             </h:form>
         </h:column>
     </h:dataTable>
-    <h:link outcome="add_test" value="Create New Test"/>
+    <h:link class="btn btn-primary" outcome="add_test" value="Create New Test"/>
 </h:body>
 </html>

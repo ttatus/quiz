@@ -10,8 +10,10 @@
     <title>Users list</title>
 </h:head>
 <h:body>
+    <h:link outcome="/index" value="Back to Homepage" /><br/>
+
     <h:outputLabel value="You can change user`s status or delete him."/><br/>
-    <h:dataTable value="#{usersListBean.users}" var="user">
+    <h:dataTable class="table table-hover" value="#{usersListBean.users}" var="user">
         <h:column>
             <f:facet name="header">Name</f:facet>
             #{user.fullName}
@@ -27,7 +29,7 @@
         <h:column>
             <f:facet name="header">Delete</f:facet>
             <h:form>
-                <h:commandButton value="Delete" action="#{usersListBean.delete(user.id)}"/>
+                <h:commandButton  class="btn btn-default" value="Delete" action="#{usersListBean.delete(user.id)}"/>
             </h:form>
         </h:column>
     </h:dataTable>

@@ -10,14 +10,19 @@
     <link href="../resources/css/bootstrap.css" rel="stylesheet"/>
 </h:head>
 <h:body>
+    <h:link outcome="index" value="Back to Homepage" /><br/>
+
     <h3>#{passTestBean.test.testName}</h3>
+
     <p>Enter your answers into fields and then click "Check me!"</p>
-    <h:form>
-        <ui:repeat value="#{passTestBean.test.questions}" var="q" varStatus="loop">
+
+    <h:form class="form-horizontal">
+        <ui:repeat styleClass="list-group" value="#{passTestBean.test.questions}" var="q" varStatus="loop">
             <h:outputLabel value="#{q.question}"/><br/>
             <h:inputText value="#{passTestBean.answers[loop.index]}" /><br/>
         </ui:repeat>
-        <h:commandButton value="Check me!" action="#{passTestBean.check}"/>
+        
+        <h:commandButton styleClass="btn btn-primary" value="Check me!" action="#{passTestBean.check}"/>
     </h:form>
     <h:outputLabel value="Your result: #{passTestBean.result}"/>
 </h:body>

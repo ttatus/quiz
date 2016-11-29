@@ -11,8 +11,10 @@
     <title>Sign-Up Page</title>
 </h:head>
 <h:body>
+    <h:link outcome="index" value="Back to Homepage" /><br/>
+
     <h:outputLabel value="Fill all fields to register in my system."/>
-    <h:form>
+    <h:form class="form-horizontal">
         <h:outputLabel value="First name:"/>
         <h:inputText value="#{registrationBean.firstName}" required="true"/><br/>
 
@@ -25,7 +27,7 @@
         <h:outputLabel value="Password:"/>
         <h:inputText a:type="password" value="#{registrationBean.password}" required="true"/><br/>
 
-        <h:commandButton action="#{registrationBean.createUser}" value="Submit"/><br/>
+        <h:commandButton class="btn btn-default" action="#{registrationBean.createUser}" value="Submit"/><br/>
     </h:form>
     #{registrationBean.message}
 </h:body>

@@ -11,9 +11,10 @@
     <link href="../resources/css/bootstrap.css" rel="stylesheet"/>
 </h:head>
 <h:body>
+    <h:link outcome="index" value="Back to Homepage" /><br/>
+
     <h3>Your profile</h3>
-    <h:form>
-        <h:link outcome="index" value="Back to Homepage" /><br/>
+    <h:form class="form-horizontal">
         <h:outputLabel value="First name:"/>
         <h:inputText value="#{userProfile.user.firstName}" required="true"/><br/>
 
@@ -26,7 +27,7 @@
         <h:outputLabel value="Password:"/>
         <h:inputText a:type="password" value="#{userProfile.user.password}" required="true"/><br/>
 
-        <h:commandButton action="#{userProfile.saveChanges}" value="Save"/><br/>
+        <h:commandButton class="btn btn-default" action="#{userProfile.saveChanges}" value="Save"/><br/>
         <h:outputLabel value="#{userProfile.message}"/>
     </h:form>
 
