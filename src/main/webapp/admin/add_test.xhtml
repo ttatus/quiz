@@ -14,30 +14,36 @@
     <h4>Add a new test</h4>
 
     <h:form>
+        <h:outputLabel value="Name:"/>
+        <h:inputText value="#{addTestBean.testName}" required="true"/><br/>
+
+        <h:outputLabel value="Category:"/>
+        <h:inputText value="#{addTestBean.testCategory}" required="true"/><br/>
+
+        <h:commandButton value="Add test"/>
+    </h:form>
+
+    <br/><h:outputLabel>Questions in your test:</h:outputLabel><br/>
+    <ui:repeat value="#{addTestBean.questions}" var="q">
+        <h:outputLabel value="#{q.question}"/><br/>
+    </ui:repeat>
+
+    <br/>
+    <h:form>
         <h:outputLabel value="Question:"/>
         <h:inputText value="#{addTestBean.question}" required="true"/><br/>
 
         <h:outputLabel value="Answer:"/>
         <h:inputText value="#{addTestBean.answer}" required="true"/><br/>
 
+        <h:outputLabel value="Points:"/>
         <h:inputText a:type="number" value="#{addTestBean.points}" required="true">
             <f:convertNumber/>
         </h:inputText><br/>
         <h:commandButton action="#{addTestBean.addQuestion}" value="Add question"/><br/>
     </h:form>
-
-    <h:outputLabel>Questions in your test:</h:outputLabel><br/>
-    <ui:repeat value="#{addTestBean.questions}" var="q">
-        <h:outputLabel value="#{q.question}"/><br/>
-    </ui:repeat>
-
     <h:form>
-        <h:outputLabel value="Name:"/>
-        <h:inputText value="#{addTestBean.testName}" required="true"/><br/>
-
-        <h:outputLabel value="Category:"/>
-        <h:inputText value="#{addTestBean.testCategory}" required="true"/><br/>
-        <h:commandButton action="#{addTestBean.createTest}" value="Create test"/><br/>
+        <h:commandButton action="#{addTestBean.createTest}" value="Save"/><br/>
     </h:form>
 </h:body>
 </html>

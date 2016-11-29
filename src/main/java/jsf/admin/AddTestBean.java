@@ -38,10 +38,6 @@ public class AddTestBean implements Serializable {
     }
 
     public String createTest() {
-//        for (int i=0; i<questions.size(); i++) {
-//            questions.set(i, questionDAO.create(questions.get(i)));
-//        }
-
         testDAO.create(testName, testCategory, questions);
         return "tests";
     }
