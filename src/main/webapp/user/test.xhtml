@@ -7,22 +7,20 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Test - #{passTestBean.test.testName}</title>
-    <link href="../resources/css/bootstrap.css" rel="stylesheet"/>
+    <link href="resources/css/bootstrap.css" rel="stylesheet"/>
 </h:head>
 <h:body>
     <h:link outcome="index" value="Back to Homepage" /><br/>
 
     <h3>#{passTestBean.test.testName}</h3>
-
     <p>Enter your answers into fields and then click "Check me!"</p>
-
-    <h:form class="form-horizontal">
-        <ui:repeat styleClass="list-group" value="#{passTestBean.test.questions}" var="q" varStatus="loop">
+    <h:form>
+        <ui:repeat value="#{passTestBean.test.questions}" var="q" varStatus="loop">
             <h:outputLabel value="#{q.question}"/><br/>
-            <h:inputText value="#{passTestBean.answers[loop.index]}" /><br/>
+            <h:inputText value="#{passTestBean.answers[loop.index]}" />
+            <h:outputLabel class="badge" value=" #{passTestBean.marks[loop.index]}"/><br/>
         </ui:repeat>
-        
-        <h:commandButton styleClass="btn btn-primary" value="Check me!" action="#{passTestBean.check}"/>
+        <h:commandButton value="Check me!" action="#{passTestBean.check}" disabled="#{passTestBean.buttonDisabled}"/>
     </h:form>
     <h:outputLabel value="Your result: #{passTestBean.result}"/>
 </h:body>

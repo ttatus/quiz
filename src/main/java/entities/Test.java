@@ -1,5 +1,8 @@
 package entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,9 +19,11 @@ public class Test {
     private String testName;
     @Column(name = "category", nullable = false)
     private String category;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "test_id", nullable = false)
     private List<Question> questions;
+//    @OneToMany(mappedBy = "test")
+//    private Set<Result> results;
 
     public Test() {
     }
@@ -59,6 +64,14 @@ public class Test {
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
+
+//    public List<Result> getResults() {
+//        return results;
+//    }
+//
+//    public void setResults(List<Result> results) {
+//        this.results = results;
+//    }
 
     @Override
     public String toString() {
