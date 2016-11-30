@@ -3,17 +3,18 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+>
 
 <h:head>
     <title>Quiz home page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h3>Hi there, in my testing system. You have to sign in or sing up to proceed.</h3>
-    <h:link outcome="admin/index" value="To the admin section" /><br />
-    <h:link outcome="user/index" value="To the user section" /><br />
-    <h:link outcome="registration" value="Register" />
+    <div class="container">
+        <h3>Hi there, in my testing system. You have to sign in or sing up to proceed.</h3>
+        <h:link outcome="admin/index" value="To the admin section"/><br/>
+        <h:link outcome="user/index" value="To the user section"/><br/>
+        <h:link outcome="registration" value="Register"/>
+    </div>
 </h:body>
 </html>

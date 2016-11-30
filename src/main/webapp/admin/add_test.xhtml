@@ -11,42 +11,86 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h:link outcome="index" value="Back to Homepage" /><br/>
+    <div class="container">
+        <h:link outcome="index" value="Back to Homepage"/><br/>
 
-    <h4>Add a new test</h4>
+        <h4>Add a new test</h4>
 
-    <h:form class="form-horizontal">
-        <h:outputLabel value="Name:"/>
-        <h:inputText value="#{addTestBean.testName}" required="true"/><br/>
+        <h:form styleClass="form-horizontal">
+            <div class="form-group">
+                <h:outputLabel value="Name:"
+                               styleClass="col-sm-2 control-label"/>
+                <div class="col-sm-10">
+                    <h:inputText id="testName"
+                                 value="#{addTestBean.testName}"
+                                 required="true"/>
+                </div>
+            </div>
 
-        <h:outputLabel value="Category:"/>
-        <h:inputText value="#{addTestBean.testCategory}" required="true"/><br/>
+            <div class="form-group">
+                <h:outputLabel value="Category:"
+                               styleClass="col-sm-2 control-label"/>
+                <div class="col-sm-10">
+                    <h:inputText id="testCategory"
+                                 value="#{addTestBean.testCategory}"
+                                 required="true"/>
+                </div>
+            </div>
 
-        <h:commandButton class="btn btn-default" value="Add test"/>
-    </h:form>
+            <h:commandButton class="btn btn-default" value="Add test"/>
+        </h:form>
 
-    <br/><h:outputLabel>Questions in your test:</h:outputLabel><br/>
-    <ui:repeat styleClass="list-group" value="#{addTestBean.questions}" var="q">
-        <h:outputLabel value="#{q.question}"/><br/>
-    </ui:repeat>
+        <br/><h:outputLabel>Questions in your test:</h:outputLabel><br/>
+        <ui:repeat styleClass="list-group" value="#{addTestBean.questions}" var="q">
+            <h:outputLabel value="#{q.question}"/><br/>
+        </ui:repeat>
 
-    <br/>
-    <h:form class="form-horizontal">
-        <h:outputLabel value="Question:"/>
-        <h:inputText value="#{addTestBean.question}" required="true"/><br/>
+        <br/>
+        <h:form styleClass="form-horizontal">
+            <div class="form-group">
+                <h:outputLabel for="question"
+                               styleClass="col-sm-2 control-label"
+                               value="Question:"/>
+                <div class="col-sm-10">
+                    <h:inputText id="question"
+                                 styleClass="form-control"
+                                 value="#{addTestBean.question}"
+                                 required="true"/>
+                </div>
+            </div>
 
-        <h:outputLabel value="Answer:"/>
-        <h:inputText value="#{addTestBean.answer}" required="true"/><br/>
+            <div class="form-group">
+                <h:outputLabel for="answer"
+                               styleClass="col-sm-2 control-label"
+                               value="Answer:"/>
+                <div class="col-sm-10">
+                    <h:inputText id="answer"
+                                 styleClass="form-control"
+                                 value="#{addTestBean.answer}"
+                                 required="true"/>
+                </div>
+            </div>
 
-        <h:outputLabel value="Points:"/>
-        <h:inputText a:type="number" value="#{addTestBean.points}" required="true">
-            <f:convertNumber/>
-        </h:inputText><br/>
-        <h:commandButton class="btn btn-default" action="#{addTestBean.addQuestion}" value="Add question"/><br/>
-    </h:form>
+            <div class="form-group">
+                <h:outputLabel for="points"
+                               styleClass="col-sm-2 control-label"
+                               value="Points:"/>
+                <div class="col-sm-10">
+                    <h:inputText a:type="number"
+                                 id="points"
+                                 styleClass="form-control"
+                                 value="#{addTestBean.points}"
+                                 required="true">
+                        <f:convertNumber/>
+                    </h:inputText>
+                </div>
+            </div>
+            <h:commandButton styleClass="btn btn-default" action="#{addTestBean.addQuestion}" value="Add question"/>
+        </h:form>
 
-    <h:form>
-        <h:commandButton class="btn btn-primary" action="#{addTestBean.createTest}" value="Save"/><br/>
-    </h:form>
+        <h:form>
+            <h:commandButton styleClass="btn btn-primary" action="#{addTestBean.createTest}" value="Save"/><br/>
+        </h:form>
+    </div>
 </h:body>
 </html>
