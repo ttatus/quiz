@@ -2,6 +2,9 @@ package dao;
 
 import entities.Question;
 import entities.Test;
+import jsf.admin.AddTestBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,6 +20,7 @@ import java.util.List;
  */
 @Stateless
 public class TestDAO extends BaseDAO<Test> {
+    private final Logger log = LogManager.getLogger(TestDAO.class);
     TestDAO() {
         super.setEntityClass(Test.class);
     }
@@ -27,6 +31,7 @@ public class TestDAO extends BaseDAO<Test> {
         test.setQuestions(q);
         em.persist(test);
         em.flush();
+        log.info("New test created. Name: "+test.getTestName());
         return test;
     }
 

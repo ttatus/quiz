@@ -56,5 +56,4 @@ public class ResultDAO extends BaseDAO<Result> {
         query.setParameter("user", user);
         return query.getResultList();
     }
-
 }

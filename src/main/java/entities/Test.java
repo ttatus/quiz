@@ -81,4 +81,8 @@ public class Test {
                 ", category='" + category + '\'' +
                 '}';
     }
+
+    public boolean equals(Test anotherTest) {
+        return id == anotherTest.getId();
+    }
 }

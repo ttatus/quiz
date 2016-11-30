@@ -35,6 +35,14 @@
             <f:facet name="header">Category</f:facet>
             #{test.category}
         </h:column>
+        <h:column>
+            <f:facet name="header">Test passed?</f:facet>
+            #{resultsBean.isTestPassed(test)}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Mark</f:facet>
+            #{resultsBean.getTestMark(test)}
+        </h:column>
     </h:dataTable>
 </h:body>
 </html>

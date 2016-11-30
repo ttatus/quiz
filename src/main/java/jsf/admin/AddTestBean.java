@@ -3,6 +3,9 @@ package jsf.admin;
 import dao.QuestionDAO;
 import dao.TestDAO;
 import entities.Question;
+import jsf.RegistrationBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -20,6 +23,7 @@ import java.util.List;
 @ViewScoped
 public class AddTestBean implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @EJB
     private TestDAO testDAO;
     @EJB

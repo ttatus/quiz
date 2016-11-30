@@ -4,6 +4,8 @@ import dao.RoleDAO;
 import dao.UserDAO;
 import entities.Role;
 import entities.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
@@ -22,6 +24,7 @@ import java.util.List;
 @ViewScoped
 public class RegistrationBean implements Serializable {
     private static final long serialVersionUID = 1L;
+    private final Logger log = LogManager.getLogger(RegistrationBean.class);
 
     @EJB
     private UserDAO userDAO;
@@ -37,10 +40,12 @@ public class RegistrationBean implements Serializable {
         try {
             userDAO.create(firstName, lastName, email, password);
             message = "You have been registered successfully!";
+            log.info("Registration OK. Email: " + email);
             return "index.html";
         } catch (EJBException e) {
-        message = "Some error occurred :( Try again.";
-    }
+            log.error("Registration Failed", e.getCause());
+            message = "Some error occurred :( Try again.";
+        }
         return "";
     }
 

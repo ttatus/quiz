@@ -2,6 +2,8 @@ package jsf;
 
 import dao.TestDAO;
 import entities.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -21,6 +23,8 @@ import java.util.List;
 @ManagedBean
 @RequestScoped
 public class TestsListBean implements Serializable {
+    private final Logger log = LogManager.getLogger(TestsListBean.class);
+    
     @EJB
     private TestDAO testDAO;
 
@@ -62,6 +66,7 @@ public class TestsListBean implements Serializable {
 
     public void delete(int test_id) throws IOException {
         testDAO.delete(testDAO.find(test_id));
+        log.info("test deleted. ID: "+test_id);
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
     }
