@@ -1,8 +1,11 @@
 package jsf.user;
 
+import dao.ResultDAO;
 import dao.TestDAO;
+import dao.UserDAO;
 import entities.Question;
 import entities.Test;
+import entities.User;
 import org.hibernate.Hibernate;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +32,12 @@ public class PassTestBean implements Serializable {
 
     @EJB
     TestDAO testDAO;
+
+    @EJB
+    ResultDAO resultDAO;
+
+    @EJB
+    UserDAO userDAO;
 
     Test test;
     List<Question> questions;
@@ -69,7 +78,14 @@ public class PassTestBean implements Serializable {
         }
 
         result = points;
+        resultDAO.create(result, getCurrentUser(), test);
+
         buttonDisabled = true;
+    }
+
+    private User getCurrentUser() {
+        String email = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
+        return userDAO.findUserByEmail(email);
     }
 
     public Test getTest() {

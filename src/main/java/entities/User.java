@@ -33,7 +33,7 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "role"))
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Result> results;
 
     public User() {    }
