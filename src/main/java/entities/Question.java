@@ -1,10 +1,15 @@
 package entities;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 /**
  * Created by tanya on 2016-11-28.
  */
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "questions")
 public class Question {
@@ -22,41 +27,6 @@ public class Question {
     public Question(String question, String answer, int points) {
         this.question = question;
         this.answer = answer;
-        this.points = points;
-    }
-
-    public Question() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
         this.points = points;
     }
 

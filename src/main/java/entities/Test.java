@@ -1,5 +1,7 @@
 package entities;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -9,6 +11,8 @@ import java.util.List;
 /**
  * Created by tanya on 2016-11-28.
  */
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "tests")
 public class Test {
@@ -25,44 +29,9 @@ public class Test {
 //    @OneToMany(mappedBy = "test")
 //    private Set<Result> results;
 
-    public Test() {
-    }
-
     public Test(String testName, String category) {
         this.testName = testName;
         this.category = category;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTestName() {
-        return testName;
-    }
-
-    public void setTestName(String testName) {
-        this.testName = testName;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
     }
 
 //    public List<Result> getResults() {

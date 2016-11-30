@@ -1,6 +1,7 @@
 package dao;
 
 import entities.Role;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 
 import javax.ejb.Stateless;
@@ -11,6 +12,7 @@ import javax.persistence.TypedQuery;
 /**
  * Created by tanya on 2016-11-27.
  */
+@Log4j2
 @Stateless
 public class RoleDAO {
     @PersistenceContext(unitName = "quiz")

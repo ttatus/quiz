@@ -2,6 +2,7 @@ package dao;
 
 import entities.Role;
 import entities.User;
+import lombok.extern.log4j.Log4j2;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by tanya on 2016-11-27.
  */
+@Log4j2
 @Stateless
 public class UserDAO extends BaseDAO<User> {
     public UserDAO() {

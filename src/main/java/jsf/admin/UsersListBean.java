@@ -2,6 +2,8 @@ package jsf.admin;
 
 import dao.UserDAO;
 import entities.User;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -20,11 +22,12 @@ import java.util.List;
 
 @ManagedBean
 @ViewScoped
+@Log4j2
 public class UsersListBean implements Serializable {
 
     @EJB
     private UserDAO userDAO;
-    List<User> users;
+    @Getter List<User> users;
 
     @PostConstruct
     public void init() {
@@ -39,8 +42,4 @@ public class UsersListBean implements Serializable {
 
     // TODO change status to one of moderator, admin, user
     public void changeStatus(int user_id, String status) {}
-
-    public List<User> getUsers() {
-        return users;
-    }
 }

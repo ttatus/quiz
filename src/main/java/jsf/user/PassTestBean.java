@@ -6,6 +6,8 @@ import dao.UserDAO;
 import entities.Question;
 import entities.Test;
 import entities.User;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import javax.annotation.PostConstruct;
@@ -39,14 +41,14 @@ public class PassTestBean implements Serializable {
     @EJB
     UserDAO userDAO;
 
-    Test test;
-    List<Question> questions;
-    List<String> answers;
-    List<String> marks;
+    @Getter @Setter Test test;
+    @Getter @Setter List<Question> questions;
+    @Getter @Setter List<String> answers;
+    @Getter @Setter List<String> marks;
 
-    int result;
+    @Getter int result;
 
-    boolean buttonDisabled = false;
+    @Getter boolean buttonDisabled = false;
 
     @PostConstruct
     public void init() {
@@ -86,37 +88,5 @@ public class PassTestBean implements Serializable {
     private User getCurrentUser() {
         String email = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
         return userDAO.findUserByEmail(email);
-    }
-
-    public Test getTest() {
-        return test;
-    }
-
-    public void setTest(Test test) {
-        this.test = test;
-    }
-
-    public List<String> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(List<String> answers) {
-        this.answers = answers;
-    }
-
-    public int getResult() {
-        return result;
-    }
-
-    public List<String> getMarks() {
-        return marks;
-    }
-
-    public void setMarks(List<String> marks) {
-        this.marks = marks;
-    }
-
-    public boolean isButtonDisabled() {
-        return buttonDisabled;
     }
 }

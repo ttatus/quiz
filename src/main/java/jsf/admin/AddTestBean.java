@@ -4,6 +4,9 @@ import dao.QuestionDAO;
 import dao.TestDAO;
 import entities.Question;
 import jsf.RegistrationBean;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,6 +24,7 @@ import java.util.List;
  */
 @ManagedBean
 @ViewScoped
+@Log4j2
 public class AddTestBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -29,12 +33,12 @@ public class AddTestBean implements Serializable {
     @EJB
     private QuestionDAO questionDAO;
 
-    private String testName;
-    private String testCategory;
-    private String question;
-    private String answer;
-    private int points;
-    private List<Question> questions;
+    @Getter @Setter private String testName;
+    @Getter @Setter private String testCategory;
+    @Getter @Setter private String question;
+    @Getter @Setter private String answer;
+    @Getter @Setter private int points;
+    @Getter @Setter private List<Question> questions;
 
     @PostConstruct
     public void init() {
@@ -55,53 +59,5 @@ public class AddTestBean implements Serializable {
         question = "";
         answer = "";
         points = 0;
-    }
-
-    public String getTestName() {
-        return testName;
-    }
-
-    public void setTestName(String testName) {
-        this.testName = testName;
-    }
-
-    public String getTestCategory() {
-        return testCategory;
-    }
-
-    public void setTestCategory(String testCategory) {
-        this.testCategory = testCategory;
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
     }
 }
