@@ -3,35 +3,36 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <link href="../resources/css/bootstrap.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <title>Users list</title>
 </h:head>
 <h:body>
-    <h:link outcome="/index" value="Back to Homepage" /><br/>
+    <div class="container">
+        <h:link outcome="/index" value="Back to Homepage"/><br/>
 
-    <h:outputLabel value="You can change user`s status or delete him."/><br/>
-    <h:dataTable class="table table-hover" value="#{usersListBean.users}" var="user">
-        <h:column>
-            <f:facet name="header">Name</f:facet>
-            #{user.fullName}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Email</f:facet>
-            #{user.email}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Status</f:facet>
-            #{user.roleName}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Delete</f:facet>
-            <h:form>
-                <h:commandButton  class="btn btn-default" value="Delete" action="#{usersListBean.delete(user.id)}"/>
-            </h:form>
-        </h:column>
-    </h:dataTable>
+        <h:outputLabel value="You can change user`s status or delete him."/><br/>
+        <h:dataTable class="table table-hover" value="#{usersListBean.users}" var="user">
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{user.fullName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{user.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                #{user.roleName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Delete</f:facet>
+                <h:form>
+                    <h:commandButton class="btn btn-default" value="Delete" action="#{usersListBean.delete(user.id)}"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+    </div>
 </h:body>
 </html>

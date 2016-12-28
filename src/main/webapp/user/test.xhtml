@@ -4,24 +4,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+>
 <h:head>
     <title>Test - #{passTestBean.test.testName}</title>
-    <link href="../resources/css/bootstrap.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h:link outcome="index" value="Back to Homepage" /><br/>
+    <div class="container">
+        <h:link outcome="index" value="Back to Homepage"/><br/>
 
-    <h3>#{passTestBean.test.testName}</h3>
-    <p>Enter your answers into fields and then click "Check me!"</p>
-    <h:form>
-        <ui:repeat value="#{passTestBean.test.questions}" var="q" varStatus="loop">
-            <h:outputLabel value="#{q.question}"/><br/>
-            <h:inputText value="#{passTestBean.answers[loop.index]}" />
-            <h:outputLabel class="badge" value=" #{passTestBean.marks[loop.index]}"/><br/>
-        </ui:repeat>
-        <h:commandButton value="Check me!" action="#{passTestBean.check}" disabled="#{passTestBean.buttonDisabled}"/>
-    </h:form>
-    <h:outputLabel value="Your result: #{passTestBean.result}"/>
+        <h3>#{passTestBean.test.testName}</h3>
+        <p>Enter your answers into fields and then click "Check me!"</p>
+        <h:form>
+            <ui:repeat value="#{passTestBean.test.questions}" var="q" varStatus="loop">
+                <div class="form-group">
+                    <h:outputLabel styleClass="control-label"
+                                   for="question-#{q.id}"
+                                   value="#{q.question}"/>
+                    <div class="input-group">
+                        <h:inputText id="question-#{q.id}"
+                                     value="#{passTestBean.answers[loop.index]}"
+                                     styleClass="form-control"/>
+                        <h:outputLabel class="input-group-addon" value="#{passTestBean.marks[loop.index]}"/>
+                    </div>
+                </div>
+            </ui:repeat>
+            <h:commandButton value="Check me!"
+                             action="#{passTestBean.check}"
+                             disabled="#{passTestBean.buttonDisabled}"
+                             styleClass='btn btn-default #{passTestBean.buttonDisabled ? "disabled" : ""}'
+            />
+        </h:form>
+        <h:outputLabel styleClass="bg-info" value="Your result: #{passTestBean.result}"/>
+    </div>
 </h:body>
 </html>

@@ -3,46 +3,52 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <title>User home page</title>
-    <link href="../resources/css/bootstrap.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h:link outcome="/index" value="Back to Homepage" /><br/>
+    <div class="container">
+        <h:link outcome="/index" value="Back to Homepage"/><br/>
 
-    <h3>Hi, user! You can pass tests here or view your profile.</h3>
-    <h:form>
-        <h:commandButton class="btn btn-primary" action="profile" value="View Profile"/>
-    </h:form>
+        <h3>Hi, user! You can pass tests here or view your profile.</h3>
+        <h:form>
+            <h:commandButton class="btn btn-primary" action="profile" value="View Profile"/>
+        </h:form>
 
-    <h:form class="form-horizontal">
-        <h:selectOneMenu value="#{testsListBean.selectedCategory}">
-            <f:selectItems value="#{testsListBean.categories}"/>
-        </h:selectOneMenu>
-        <h:commandButton class="btn btn-default" action="#{testsListBean.filter}" value="  Filter"/>
-    </h:form>
-    <h:dataTable class="table table-hover" value="#{testsListBean.tests}" var="test">
-        <h:column>
-            <f:facet name="header">Name</f:facet>
-            <h:link value="#{test.testName}" outcome="test">
-                <f:param name="test_id" value="#{test.id}"/>
-            </h:link>
-        </h:column>
-        <h:column>
-            <f:facet name="header">Category</f:facet>
-            #{test.category}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Test passed?</f:facet>
-            #{resultsBean.isTestPassed(test)}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Mark</f:facet>
-            #{resultsBean.getTestMark(test)}
-        </h:column>
-    </h:dataTable>
+        <h:form class="form-inline">
+            <div class="form-group">
+                <h:selectOneMenu styleClass="form-control" value="#{testsListBean.selectedCategory}">
+                    <f:selectItems value="#{testsListBean.categories}"/>
+                </h:selectOneMenu>
+            </div>
+            <h:commandButton class="btn btn-default"
+                             action="#{testsListBean.filter}"
+                             value="Filter"/>
+        </h:form>
+
+        <h:dataTable class="table table-hover" value="#{testsListBean.tests}" var="test">
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                <h:link value="#{test.testName}" outcome="test">
+                    <f:param name="test_id" value="#{test.id}"/>
+                </h:link>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Category</f:facet>
+                ${test.category}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Test passed?</f:facet>
+                ${resultsBean.isTestPassed(test)}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Mark</f:facet>
+                ${resultsBean.getTestMark(test)}
+            </h:column>
+        </h:dataTable>
+    </div>
 </h:body>
 </html>
