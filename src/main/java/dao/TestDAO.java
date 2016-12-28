@@ -3,6 +3,7 @@ package dao;
 import entities.Question;
 import entities.Test;
 import jsf.admin.AddTestBean;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,9 +19,9 @@ import java.util.List;
 /**
  * Created by tanya on 2016-11-28.
  */
+@Log4j2
 @Stateless
 public class TestDAO extends BaseDAO<Test> {
-    private final Logger log = LogManager.getLogger(TestDAO.class);
     TestDAO() {
         super.setEntityClass(Test.class);
     }

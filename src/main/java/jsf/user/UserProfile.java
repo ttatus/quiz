@@ -2,6 +2,9 @@ package jsf.user;
 
 import dao.UserDAO;
 import entities.User;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -16,14 +19,15 @@ import java.io.Serializable;
 
 @javax.faces.bean.ManagedBean
 @ViewScoped
+@Log4j2
 public class UserProfile implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EJB
     UserDAO userDAO;
 
-    User user;
-    String message = "";
+    @Getter @Setter User user;
+    @Getter String message = "";
     FacesContext fc;
 
     @PostConstruct
@@ -31,18 +35,6 @@ public class UserProfile implements Serializable {
         fc = FacesContext.getCurrentInstance();
         String email = fc.getExternalContext().getUserPrincipal().getName();
         user = userDAO.findUserByEmail(email);
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public void saveChanges() {
@@ -53,8 +45,4 @@ public class UserProfile implements Serializable {
             message = "Changes didn`t saved. Try again.";
         }
     }
-
-//    public void delete() {
-//        userDAO.delete(userDAO.find(user_id));
-//    }
 }

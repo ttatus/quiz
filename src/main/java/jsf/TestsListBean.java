@@ -2,6 +2,9 @@ package jsf;
 
 import dao.TestDAO;
 import entities.Test;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,13 +25,16 @@ import java.util.List;
  */
 @ManagedBean
 @RequestScoped
+@Log4j2
 public class TestsListBean implements Serializable {
-    private final Logger log = LogManager.getLogger(TestsListBean.class);
-    
+
     @EJB
     private TestDAO testDAO;
 
+    @Getter
     List<Test> tests;
+
+    @Getter
     List<String> categories;
 
     @PostConstruct
@@ -38,6 +44,7 @@ public class TestsListBean implements Serializable {
         categories.add("All");
     }
 
+    @Getter @Setter
     private String selectedCategory = "All";
 
     public void filter() {
@@ -48,31 +55,10 @@ public class TestsListBean implements Serializable {
         }
     }
 
-    public List<Test> getTests() {
-        return tests;
-    }
-
-    public List<String> getCategories() {
-        return categories;
-    }
-
-    public String getSelectedCategory() {
-        return selectedCategory;
-    }
-
-    public void setSelectedCategory(String selectedCategory) {
-        this.selectedCategory = selectedCategory;
-    }
-
     public void delete(int test_id) throws IOException {
         testDAO.delete(testDAO.find(test_id));
         log.info("test deleted. ID: "+test_id);
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
     }
-
-//    public void goToTest(int test_id) throws IOException {
-//        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//        ec.redirect();
-//    }
 }

@@ -3,6 +3,7 @@ package dao;
 import entities.Question;
 import entities.Test;
 import entities.User;
+import lombok.extern.log4j.Log4j2;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by tanya on 2016-11-28.
  */
+@Log4j2
 @Stateless
 public class QuestionDAO extends BaseDAO<Question> {
     QuestionDAO() { super.setEntityClass(Question.class);}

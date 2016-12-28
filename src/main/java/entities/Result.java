@@ -1,10 +1,15 @@
 package entities;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 /**
  * Created by tanya on 2016-11-29.
  */
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "results")
 public class Result {
@@ -20,43 +25,9 @@ public class Result {
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
 
-    public Result() {}
-
     public Result(int mark, User user, Test test) {
         this.mark = mark;
         this.user = user;
-        this.test = test;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getMark() {
-        return mark;
-    }
-
-    public void setMark(int mark) {
-        this.mark = mark;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Test getTest() {
-        return test;
-    }
-
-    public void setTest(Test test) {
         this.test = test;
     }
 }

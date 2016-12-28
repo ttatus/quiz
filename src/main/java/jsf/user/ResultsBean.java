@@ -6,6 +6,9 @@ import dao.UserDAO;
 import entities.Result;
 import entities.Test;
 import entities.User;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -22,13 +25,14 @@ import java.util.Set;
  */
 @ManagedBean
 @ViewScoped
+@Log4j2
 public class ResultsBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EJB
     UserDAO userDAO;
 
-    User user;
+    @Getter @Setter User user;
     FacesContext fc;
 
     @PostConstruct
@@ -36,14 +40,6 @@ public class ResultsBean implements Serializable {
         fc = FacesContext.getCurrentInstance();
         String email = fc.getExternalContext().getUserPrincipal().getName();
         user = userDAO.findUserByEmail(email);
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public List<Test> getPassedTests() {

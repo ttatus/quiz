@@ -1,6 +1,7 @@
 package dao;
 
 import entities.User;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateError;
@@ -18,9 +19,9 @@ import java.util.List;
 /**
  * Created by tanya on 2016-11-28.
  */
+@Log4j2
 @Stateless
 public class BaseDAO<T> {
-    private final Logger log = LogManager.getLogger(BaseDAO.class);
 
     @PersistenceContext(unitName = "quiz")
     protected EntityManager em;
